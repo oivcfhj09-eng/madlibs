@@ -18,8 +18,8 @@ ui <- fluidPage(
       textInput("verb", "Enter a verb:", ""),
       textInput("adjective", "Enter an adjective:", ""),
       textInput("adverb", "Enter an adverb:", ""),
-      textInput("number", "Enter a number:", ""),
       textInput("country", "Enter a country:", ""),
+      textInput("number", "Enter a number:", ""),
       actionButton("submit", "Create Story")
     ),
     mainPanel(
@@ -31,7 +31,7 @@ ui <- fluidPage(
 
 server <- function(input, output) {
   story <- eventReactive(input$submit, {
-    generate_story(input$noun1, input$verb, input$adjective, input$adverb, input$number, input$country)
+    generate_story(input$noun1, input$verb, input$adjective, input$adverb, input$country, input$number)
   })
   output$story <- renderText({
     story()
